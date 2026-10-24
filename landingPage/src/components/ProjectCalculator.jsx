@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "./ui/card"
+import { Card } from "./ui/card"
 import { Button } from "./ui/button"
 import { Badge } from "./ui/badge"
 import { 
@@ -7,7 +7,6 @@ import {
   Sparkles, 
   Clock, 
   Users, 
-  Layers, 
   CheckCircle, 
   ArrowRight,
   Shield,
@@ -20,57 +19,22 @@ import {
 export function ProjectCalculator({ onOpenContactWithDetails }) {
   const [selectedService, setSelectedService] = useState("software")
   const [scale, setScale] = useState("enterprise")
-  const [selectedAddons, setSelectedAddons] = useState(["auth", "cloud", "audit"])
+  const [selectedAddons, setSelectedAddons] = useState(["auth", "cloud"])
 
   const services = [
-    {
-      id: "software",
-      name: "Software Engineering",
-      icon: Code2,
-      baseWeeks: 8,
-      baseEngineers: 3,
-      desc: "Aplikasi Web & Mobile Kustom Berkinerja Tinggi",
-    },
-    {
-      id: "cloud",
-      name: "Cloud & DevOps",
-      icon: Cloud,
-      baseWeeks: 4,
-      baseEngineers: 2,
-      desc: "Migrasi Cloud, Kubernetes Cluster & CI/CD",
-    },
-    {
-      id: "cybersecurity",
-      name: "Cybersecurity Audit",
-      icon: Shield,
-      baseWeeks: 3,
-      baseEngineers: 2,
-      desc: "Vulnerability Assessment, Hardening & Zero-Trust",
-    },
-    {
-      id: "data",
-      name: "Data & Analytics",
-      icon: Database,
-      baseWeeks: 6,
-      baseEngineers: 2,
-      desc: "Data Warehouse, ETL Pipeline & BI Dashboard",
-    },
-    {
-      id: "support",
-      name: "IT Operations 24/7",
-      icon: Headphones,
-      baseWeeks: 2,
-      baseEngineers: 2,
-      desc: "Monitoring Operasional, SLA Helpdesk & Pemeliharaan",
-    },
+    { id: "software", name: "Software App", icon: Code2, baseWeeks: 8, baseEngineers: 3, desc: "Aplikasi Web & Mobile Kustom" },
+    { id: "cloud", name: "Cloud & DevOps", icon: Cloud, baseWeeks: 4, baseEngineers: 2, desc: "Kubernetes Cluster & CI/CD" },
+    { id: "cybersecurity", name: "Security Audit", icon: Shield, baseWeeks: 3, baseEngineers: 2, desc: "VAPT & Zero-Trust Hardening" },
+    { id: "data", name: "Data Analytics", icon: Database, baseWeeks: 6, baseEngineers: 2, desc: "ETL Pipeline & Dashboard BI" },
+    { id: "support", name: "IT Operations", icon: Headphones, baseWeeks: 2, baseEngineers: 2, desc: "Helpdesk & Monitoring 24/7" },
   ]
 
   const addons = [
-    { id: "auth", name: "SSO & Multi-Factor Auth (IAM)", weeks: 1 },
-    { id: "cloud", name: "High-Availability Multi-Region Cloud", weeks: 2 },
-    { id: "audit", name: "Audit Keamanan & Pen-Test Lanjutan", weeks: 1 },
-    { id: "bi", name: "Executive Real-Time BI Dashboard", weeks: 2 },
-    { id: "sla", name: "Guaranteed 15-Minute SLA Support", weeks: 1 },
+    { id: "auth", name: "SSO & IAM Security", weeks: 1 },
+    { id: "cloud", name: "Multi-Region High Availability", weeks: 2 },
+    { id: "audit", name: "Pen-Test Lanjutan & Audit", weeks: 1 },
+    { id: "bi", name: "Executive BI Dashboard", weeks: 2 },
+    { id: "sla", name: "15-Minute Response SLA", weeks: 1 },
   ]
 
   const toggleAddon = (id) => {
@@ -81,7 +45,6 @@ export function ProjectCalculator({ onOpenContactWithDetails }) {
 
   const currentService = services.find((s) => s.id === selectedService) || services[0]
 
-  // Calculate sprint estimation
   const scaleMultiplier = scale === "startup" ? 0.75 : scale === "enterprise" ? 1 : 1.4
   const addonWeeks = selectedAddons.reduce((sum, id) => {
     const found = addons.find((a) => a.id === id)
@@ -95,43 +58,41 @@ export function ProjectCalculator({ onOpenContactWithDetails }) {
   )
 
   const handleConsultation = () => {
-    const summary = `Halo PT Amukti Palapa Digital, saya tertarik dengan layanan ${currentService.name} (Skala: ${scale}, Estimasi: ~${totalWeeks} minggu / ${totalSprints} sprints dengan ${estimatedEngineers} personil tim). Mohon info konsultasi lebih lanjut.`
+    const summary = `Halo PT Amukti Palapa Digital, saya tertarik dengan layanan ${currentService.name} (Skala: ${scale}, Estimasi: ~${totalWeeks} minggu / ${totalSprints} sprints). Mohon info jadwal konsultasi.`
     if (onOpenContactWithDetails) {
       onOpenContactWithDetails(summary)
     }
   }
 
   return (
-    <section id="simulasi" className="py-24 relative overflow-hidden bg-slate-900/50">
+    <section id="simulasi" className="py-16 sm:py-20 relative overflow-hidden bg-white dark:bg-slate-950 border-b border-slate-100 dark:border-slate-800 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <Badge variant="gradient" className="gap-1.5 px-3 py-1">
-            <Calculator className="w-3.5 h-3.5" />
-            <span>Interactive Estimator</span>
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12 space-y-2">
+          <Badge variant="default" className="gap-1.5 px-2.5 py-0.5 text-xs">
+            <Calculator className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400" />
+            <span>Estimator Proyek</span>
           </Badge>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
-            Simulasi Kebutuhan & Skala Proyek
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            Simulasi Kebutuhan Proyek
           </h2>
-          <p className="text-slate-400 text-base sm:text-lg">
-            Rancang arsitektur awal dan hitung estimasi sprint serta alokasi engineering tim untuk transformasi bisnis Anda.
+          <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm">
+            Pilih kebutuhan sistem untuk memperkirakan durasi sprint dan alokasi tim.
           </p>
         </div>
 
-        {/* Calculator Interactive Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        {/* Calculator Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
           
-          {/* Configuration Controls (Left 7 Cols) */}
-          <div className="lg:col-span-7 space-y-8">
-            
-            {/* Step 1: Select Main Service */}
+          <div className="lg:col-span-7 space-y-5">
+            {/* Step 1 */}
             <div>
-              <div className="text-sm font-semibold text-white mb-3 flex items-center gap-2">
-                <span className="h-6 w-6 rounded-full bg-cyan-500/20 text-cyan-400 text-xs flex items-center justify-center font-mono">1</span>
-                Pilih Kebutuhan Layanan Utama:
+              <div className="text-xs font-semibold text-slate-900 dark:text-white mb-2 flex items-center gap-1.5">
+                <span className="h-4 w-4 rounded-full bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-400 text-[10px] flex items-center justify-center font-bold">1</span>
+                Kebutuhan Layanan:
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {services.map((svc) => {
                   const Icon = svc.icon
                   const isSelected = selectedService === svc.id
@@ -139,169 +100,135 @@ export function ProjectCalculator({ onOpenContactWithDetails }) {
                     <button
                       key={svc.id}
                       onClick={() => setSelectedService(svc.id)}
-                      className={`p-4 rounded-xl text-left border transition-all duration-200 cursor-pointer ${
+                      className={`p-3 rounded-xl text-left border transition-all duration-150 cursor-pointer ${
                         isSelected
-                          ? "bg-slate-800 border-cyan-500/60 shadow-lg shadow-cyan-500/10 text-white"
-                          : "bg-slate-950/60 border-slate-800 text-slate-300 hover:border-slate-700"
+                          ? "bg-sky-50/70 dark:bg-sky-950/60 border-sky-300 dark:border-sky-700 shadow-2xs"
+                          : "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 hover:border-slate-300"
                       }`}
                     >
-                      <div className="flex items-center gap-3 mb-2">
-                        <div className={`p-2 rounded-lg ${isSelected ? "bg-cyan-500/20 text-cyan-400" : "bg-slate-900 text-slate-400"}`}>
-                          <Icon className="w-4 h-4" />
+                      <div className="flex items-center gap-2 mb-1">
+                        <div className={`p-1.5 rounded-lg ${isSelected ? "bg-sky-600 text-white" : "bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400"}`}>
+                          <Icon className="w-3.5 h-3.5" />
                         </div>
-                        <div className="font-semibold text-sm">{svc.name}</div>
+                        <div className="font-bold text-xs sm:text-sm text-slate-900 dark:text-white">{svc.name}</div>
                       </div>
-                      <div className="text-xs text-slate-400 line-clamp-2">{svc.desc}</div>
+                      <div className="text-[11px] text-slate-500 dark:text-slate-400">{svc.desc}</div>
                     </button>
                   )
                 })}
               </div>
             </div>
 
-            {/* Step 2: Select Scale */}
+            {/* Step 2 */}
             <div>
-              <div className="text-sm font-semibold text-white mb-3 flex items-center gap-2">
-                <span className="h-6 w-6 rounded-full bg-cyan-500/20 text-cyan-400 text-xs flex items-center justify-center font-mono">2</span>
-                Tentukan Skala Organisasi Bisnis:
+              <div className="text-xs font-semibold text-slate-900 dark:text-white mb-2 flex items-center gap-1.5">
+                <span className="h-4 w-4 rounded-full bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-400 text-[10px] flex items-center justify-center font-bold">2</span>
+                Skala Bisnis:
               </div>
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-3 gap-2">
                 {[
-                  { id: "startup", name: "Startup / SME", detail: "Fokus MVP & Validasi Cepat" },
-                  { id: "enterprise", name: "Growing Enterprise", detail: "Standar Keamanan & Skalabilitas" },
-                  { id: "corporate", name: "Large Corporate", detail: "Multi-Region & Kepatuhan Tinggi" },
+                  { id: "startup", name: "Startup" },
+                  { id: "enterprise", name: "Enterprise" },
+                  { id: "corporate", name: "Corporate" },
                 ].map((s) => (
                   <button
                     key={s.id}
                     onClick={() => setScale(s.id)}
-                    className={`p-3.5 rounded-xl text-left border transition-all cursor-pointer ${
+                    className={`py-2 px-3 rounded-lg text-center border text-xs font-semibold transition-all cursor-pointer ${
                       scale === s.id
-                        ? "bg-slate-800 border-cyan-500/60 text-white"
-                        : "bg-slate-950/60 border-slate-800 text-slate-300 hover:border-slate-700"
+                        ? "bg-sky-50 dark:bg-sky-950/60 border-sky-300 dark:border-sky-700 text-sky-700 dark:text-sky-300 shadow-2xs"
+                        : "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300"
                     }`}
                   >
-                    <div className="text-xs sm:text-sm font-semibold">{s.name}</div>
-                    <div className="text-[10px] text-slate-400 mt-1 hidden sm:block">{s.detail}</div>
+                    {s.name}
                   </button>
                 ))}
               </div>
             </div>
 
-            {/* Step 3: Add-on Modules */}
+            {/* Step 3 */}
             <div>
-              <div className="text-sm font-semibold text-white mb-3 flex items-center gap-2">
-                <span className="h-6 w-6 rounded-full bg-cyan-500/20 text-cyan-400 text-xs flex items-center justify-center font-mono">3</span>
-                Modul Ekstra & Kebutuhan Spesifik:
+              <div className="text-xs font-semibold text-slate-900 dark:text-white mb-2 flex items-center gap-1.5">
+                <span className="h-4 w-4 rounded-full bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-400 text-[10px] flex items-center justify-center font-bold">3</span>
+                Modul Ekstra:
               </div>
-              <div className="space-y-2">
+              <div className="space-y-1.5">
                 {addons.map((addon) => {
                   const isChecked = selectedAddons.includes(addon.id)
                   return (
                     <button
                       key={addon.id}
                       onClick={() => toggleAddon(addon.id)}
-                      className={`w-full flex items-center justify-between p-3 rounded-xl border text-xs sm:text-sm transition-all cursor-pointer ${
+                      className={`w-full flex items-center justify-between p-2.5 rounded-lg border text-xs transition-all cursor-pointer ${
                         isChecked
-                          ? "bg-slate-900 border-cyan-500/40 text-slate-200"
-                          : "bg-slate-950/40 border-slate-800/80 text-slate-400 hover:border-slate-700"
+                          ? "bg-sky-50/50 dark:bg-sky-950/40 border-sky-300 dark:border-sky-700 text-slate-800 dark:text-slate-200 font-medium"
+                          : "bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400"
                       }`}
                     >
-                      <div className="flex items-center gap-2.5">
+                      <div className="flex items-center gap-2">
                         <div
-                          className={`w-4 h-4 rounded border flex items-center justify-center ${
+                          className={`w-3.5 h-3.5 rounded border flex items-center justify-center ${
                             isChecked
-                              ? "bg-cyan-500 border-cyan-400 text-slate-950"
-                              : "border-slate-700 bg-slate-900"
+                              ? "bg-sky-600 border-sky-600 text-white"
+                              : "border-slate-300 dark:border-slate-700"
                           }`}
                         >
-                          {isChecked && <CheckCircle className="w-3.5 h-3.5 stroke-[3]" />}
+                          {isChecked && <CheckCircle className="w-3 h-3 stroke-[3]" />}
                         </div>
                         <span>{addon.name}</span>
                       </div>
-                      <span className="text-[11px] font-mono text-cyan-400/80">+{addon.weeks} minggu</span>
+                      <span className="text-[10px] font-mono text-sky-700 dark:text-sky-400">+{addon.weeks} mgg</span>
                     </button>
                   )
                 })}
               </div>
             </div>
-
           </div>
 
-          {/* Results Summary Card (Right 5 Cols) */}
+          {/* Results Summary Card */}
           <div className="lg:col-span-5">
-            <Card className="bg-slate-950/90 border-slate-800 p-6 sm:p-8 backdrop-blur-xl sticky top-28 shadow-2xl relative overflow-hidden">
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500" />
-
-              <div className="flex items-center justify-between pb-4 border-b border-slate-800/80 mb-6">
+            <Card className="bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 p-5 rounded-2xl sticky top-24">
+              <div className="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800 mb-4">
                 <div>
-                  <div className="text-xs font-mono text-slate-400">Estimasi Metrik Engineering</div>
-                  <div className="text-lg font-bold text-white mt-0.5">Ringkasan Delivery Proyek</div>
+                  <div className="text-[10px] font-mono text-slate-400">Hasil Estimasi</div>
+                  <div className="text-base font-bold text-slate-900 dark:text-white">Delivery Timeline</div>
                 </div>
-                <div className="p-2 rounded-xl bg-cyan-500/10 text-cyan-400">
-                  <Sparkles className="w-5 h-5" />
+                <Sparkles className="w-4 h-4 text-sky-600 dark:text-sky-400" />
+              </div>
+
+              <div className="grid grid-cols-2 gap-2.5 mb-4">
+                <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                  <div className="text-[10px] text-slate-400 flex items-center gap-1 mb-0.5">
+                    <Clock className="w-3 h-3 text-sky-600" />
+                    <span>Sprint</span>
+                  </div>
+                  <div className="text-xl font-bold font-heading text-slate-900 dark:text-white">
+                    {totalSprints} <span className="text-xs font-normal text-slate-400">Sprint</span>
+                  </div>
+                  <div className="text-[10px] text-sky-700 dark:text-sky-400">~{totalWeeks} minggu</div>
+                </div>
+
+                <div className="p-3 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+                  <div className="text-[10px] text-slate-400 flex items-center gap-1 mb-0.5">
+                    <Users className="w-3 h-3 text-sky-600" />
+                    <span>Alokasi</span>
+                  </div>
+                  <div className="text-xl font-bold font-heading text-slate-900 dark:text-white">
+                    {estimatedEngineers} <span className="text-xs font-normal text-slate-400">Personil</span>
+                  </div>
+                  <div className="text-[10px] text-sky-700 dark:text-sky-400">Tim spesialis</div>
                 </div>
               </div>
 
-              {/* Dynamic Estimates */}
-              <div className="grid grid-cols-2 gap-4 mb-6">
-                <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
-                  <div className="flex items-center gap-2 text-slate-400 text-xs mb-1">
-                    <Clock className="w-3.5 h-3.5 text-cyan-400" />
-                    <span>Durasi Sprint</span>
-                  </div>
-                  <div className="text-2xl font-bold font-heading text-white">
-                    {totalSprints} <span className="text-sm font-normal text-slate-400">Sprint</span>
-                  </div>
-                  <div className="text-[11px] text-cyan-400/90 mt-0.5">~{totalWeeks} minggu kerja</div>
-                </div>
-
-                <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
-                  <div className="flex items-center gap-2 text-slate-400 text-xs mb-1">
-                    <Users className="w-3.5 h-3.5 text-cyan-400" />
-                    <span>Alokasi Tim</span>
-                  </div>
-                  <div className="text-2xl font-bold font-heading text-white">
-                    {estimatedEngineers} <span className="text-sm font-normal text-slate-400">Specialists</span>
-                  </div>
-                  <div className="text-[11px] text-cyan-400/90 mt-0.5">Multi-divisi dedikasi</div>
-                </div>
-              </div>
-
-              {/* Included specifications breakdown */}
-              <div className="space-y-3 mb-6 p-4 rounded-xl bg-slate-900/40 border border-slate-800/60 text-xs text-slate-300">
-                <div className="font-semibold text-slate-200">Spesifikasi Layanan Terpilih:</div>
-                <div className="flex items-center justify-between">
-                  <span className="text-slate-400">Core Focus:</span>
-                  <span className="font-medium text-white">{currentService.name}</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-slate-400">Skala Sistem:</span>
-                  <span className="font-medium capitalize text-cyan-300">{scale} Level</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-slate-400">Modul Tambahan:</span>
-                  <span className="font-medium text-white">{selectedAddons.length} Fitur Terpilih</span>
-                </div>
-                <div className="flex items-center justify-between border-t border-slate-800 pt-2 text-[11px]">
-                  <span className="text-slate-400">Model Kolaborasi:</span>
-                  <span className="text-amber-400 font-mono">Agile / Hybrid / SLA Guarantees</span>
-                </div>
-              </div>
-
-              {/* Action Button */}
               <Button
-                variant="gradient"
-                size="lg"
+                variant="default"
+                size="sm"
                 onClick={handleConsultation}
-                className="w-full justify-center gap-2 shadow-lg shadow-cyan-500/20"
+                className="w-full justify-center gap-2 bg-sky-600 hover:bg-sky-700 text-white font-medium"
               >
                 <span>Konsultasikan Estimasi Ini</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-3.5 h-3.5" />
               </Button>
-
-              <div className="text-center text-[11px] text-slate-500 mt-3">
-                *Estimasi fleksibel dan disesuaikan dengan asesmen arsitektur aktual.
-              </div>
-
             </Card>
           </div>
 
@@ -311,4 +238,3 @@ export function ProjectCalculator({ onOpenContactWithDetails }) {
     </section>
   )
 }
-

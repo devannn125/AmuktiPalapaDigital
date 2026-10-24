@@ -30,7 +30,7 @@ Berdasarkan proposal resmi perusahaan:
    - UI/UX Designer
    - Accounting & Keuangan
 5. **Program Magang & Kemitraan Akademik (BAB I & BAB III)**:
-   - Program terstruktur selama 6 bulan (Agustus – Februari) dengan keterlibatan proyek riil.
+   - Program terstruktur selama 6 bulan (Fleksibel) dengan keterlibatan proyek riil.
    - Skema kerja fleksibel: Hybrid & Remote (Senin-Jumat 09:00 - 17:00 WIB).
    - Kolaborasi erat dengan perguruan tinggi (misal Informatika Universitas Atma Jaya Yogyakarta / UAJY).
 6. **Lokasi Kantor Resmi (BAB III Bagian B & Gambar 3)**:

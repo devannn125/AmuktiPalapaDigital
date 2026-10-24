@@ -1,18 +1,12 @@
 import React from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
+import { Card } from "./ui/card"
 import { Badge } from "./ui/badge"
 import { Button } from "./ui/button"
 import { 
   GraduationCap, 
-  BookOpen, 
   Laptop, 
   GitBranch, 
   Calendar, 
-  Clock, 
-  CheckCircle2, 
-  Sparkles,
-  Award,
-  Users2,
   Building2,
   ArrowRight
 } from "lucide-react"
@@ -20,73 +14,73 @@ import {
 export function AcademicPartnership({ onOpenContact }) {
   const internshipHighlights = [
     {
-      title: "6 Bulan Pengalaman Nyata",
-      desc: "Durasi terstruktur selama 6 bulan untuk mendalami alur kerja profesional pada proyek riil, bukan sekadar tugas simulasi.",
+      title: "6 Bulan Proyek Nyata",
+      desc: "Keterlibatan langsung pada produk digital aktif dan arsitektur enterprise.",
       icon: Calendar,
-      detail: "10 Agustus - 10 Februari • Senin-Jumat 09:00 - 17:00 WIB",
+      detail: "Fleksibel",
     },
     {
-      title: "Penempatan Divisi CTO",
-      desc: "Ditempatkan langsung pada salah satu dari 5 divisi teknologi: Software Engineering, Cloud, Cybersec, Data, atau IT Support.",
+      title: "Divisi Teknologi CTO",
+      desc: "Penempatan di Software, Cloud, Cybersec, Data, atau IT Support.",
       icon: GitBranch,
-      detail: "Mentoring intensif oleh praktisi & Engineering Leads",
+      detail: "Mentoring praktisi",
     },
     {
-      title: "Model Kerja Fleksibel Hybrid & Remote",
-      desc: "Menyesuaikan dinamika kerja modern dengan fasilitas platform kolaborasi daring, akses repository kode, dan infrastruktur cloud.",
+      title: "Hybrid & Remote",
+      desc: "Skema kerja fleksibel dengan platform kolaborasi dan repo daring.",
       icon: Laptop,
-      detail: "Daring (Remote) & On-Site Sleman Yogyakarta",
+      detail: "Prambanan Hub & Daring",
     },
     {
-      title: "Sinergi Akademik Terpadu",
-      desc: "Bekerja sama erat dengan institusi pendidikan tinggi terkemuka, seperti Universitas Atma Jaya Yogyakarta (UAJY) Informatika.",
+      title: "Mitra Perguruan Tinggi",
+      desc: "Kolaborasi kurikulum terapan (misal: UAJY Informatika) & konversi SKS.",
       icon: GraduationCap,
-      detail: "Konversi SKS, Laporan Akhir & Jalur Fast-Track Rekrutmen",
+      detail: "Jalur karir talenta",
     },
   ]
 
   const workflowSteps = [
-    { step: "01", name: "Observasi & Orientasi", desc: "Pemahaman arsitektur sistem, aturan kode, dan tools kolaborasi tim." },
-    { step: "02", name: "Perancangan Solusi", desc: "Penyusunan arsitektur teknis dan diagram alur bersama Lead Engineer." },
-    { step: "03", name: "Pengembangan Nyata", desc: "Penulisan kode, unit testing, dan integrasi modul pada platform aktif." },
-    { step: "04", name: "Evaluasi & Deployment", desc: "Review kualitas kode, pengujian performa, dan dokumentasi logbook." },
+    { step: "01", name: "Orientasi", desc: "Arsitektur sistem & aturan repo" },
+    { step: "02", name: "Desain Solusi", desc: "Perancangan modul & sprint" },
+    { step: "03", name: "Development", desc: "Coding, testing & QA" },
+    { step: "04", name: "Deployment", desc: "Review kode & laporan akhir" },
   ]
 
   return (
-    <section id="magang" className="py-24 relative overflow-hidden bg-slate-950 border-t border-slate-900">
+    <section id="magang" className="py-16 sm:py-20 relative overflow-hidden bg-slate-50/70 dark:bg-slate-900/40 border-b border-slate-100 dark:border-slate-800 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <Badge variant="amber" className="gap-1.5 px-3 py-1">
-            <GraduationCap className="w-3.5 h-3.5" />
-            <span>Kemitraan Akademik & Pengembangan Talenta</span>
+        {/* Header */}
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12 space-y-2">
+          <Badge variant="default" className="gap-1.5 px-2.5 py-0.5 text-xs">
+            <GraduationCap className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400" />
+            <span>Kemitraan Akademik</span>
           </Badge>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
-            Program Inkubasi Magang & Talenta Digital
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            Program Magang & Talenta
           </h2>
-          <p className="text-slate-400 text-base sm:text-lg">
-            Sesuai komitmen pada Bab I & Bab III Proposal Magang PT Amukti Palapa Digital, kami membuka ruang pembelajaran kolaboratif bagi mahasiswa Informatika untuk mencetak engineer masa depan berdaya saing global.
+          <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm">
+            Ruang pembelajaran kolaboratif bagi mahasiswa Informatika pada proyek riil.
           </p>
         </div>
 
-        {/* 4 Feature Highlights */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        {/* 4 Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-8">
           {internshipHighlights.map((item, idx) => {
             const Icon = item.icon
             return (
               <Card
                 key={idx}
-                className="bg-slate-900/60 border-slate-800 hover:border-cyan-500/40 p-6 flex flex-col justify-between group transition-all duration-300"
+                className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 sm:p-5 flex flex-col justify-between hover:border-sky-300 dark:hover:border-sky-700 transition-all duration-200"
               >
                 <div>
-                  <div className="h-10 w-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 mb-4 group-hover:scale-110 transition-transform">
-                    <Icon className="w-5 h-5" />
+                  <div className="h-8 w-8 rounded-lg bg-sky-50 dark:bg-sky-950/60 border border-sky-100 dark:border-sky-800 flex items-center justify-center text-sky-600 dark:text-sky-400 mb-3">
+                    <Icon className="w-4 h-4" />
                   </div>
-                  <h4 className="text-base font-bold text-white mb-2">{item.title}</h4>
-                  <p className="text-xs text-slate-400 leading-relaxed mb-4">{item.desc}</p>
+                  <h4 className="text-sm font-bold text-slate-900 dark:text-white mb-1">{item.title}</h4>
+                  <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mb-3">{item.desc}</p>
                 </div>
-                <div className="pt-3 border-t border-slate-800/80 text-[11px] font-mono text-cyan-300">
+                <div className="pt-2.5 border-t border-slate-100 dark:border-slate-800 text-[11px] font-mono text-sky-700 dark:text-sky-400 font-medium">
                   {item.detail}
                 </div>
               </Card>
@@ -94,61 +88,46 @@ export function AcademicPartnership({ onOpenContact }) {
           })}
         </div>
 
-        {/* Workflow Timeline Banner */}
-        <div className="rounded-2xl bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900 border border-slate-800 p-8 sm:p-10 mb-12">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-            <div>
-              <span className="text-xs font-mono text-cyan-400 uppercase tracking-wider">
-                Alur Kerja Program (Bab III Bagian A)
-              </span>
-              <h3 className="text-2xl font-bold text-white mt-1">
-                4 Tahapan Pembelajaran Terstruktur
-              </h3>
-            </div>
-            <div className="text-xs text-slate-400 bg-slate-900 px-3.5 py-1.5 rounded-full border border-slate-800 self-start">
-              Fasilitas: Akses Repo Git, Cloud Sandbox, & Mentoring
-            </div>
+        {/* Workflow */}
+        <div className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 sm:p-6 mb-6">
+          <div className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-3">
+            Tahapan Magang 6 Bulan:
           </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {workflowSteps.map((step, idx) => (
-              <div
-                key={idx}
-                className="p-4 rounded-xl bg-slate-950/60 border border-slate-800/80 relative"
-              >
-                <div className="text-xl font-mono font-bold text-cyan-400 mb-2">
-                  {step.step}
-                </div>
-                <div className="text-sm font-bold text-white mb-1">{step.name}</div>
-                <div className="text-xs text-slate-400 leading-relaxed">{step.desc}</div>
+              <div key={idx} className="p-3 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-100 dark:border-slate-800/80">
+                <span className="text-xs font-mono font-bold text-sky-600 dark:text-sky-400">{step.step}</span>
+                <div className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white mt-0.5">{step.name}</div>
+                <div className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5">{step.desc}</div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Synergy Card: University Partnership */}
-        <div className="rounded-2xl bg-slate-900/40 border border-slate-800/80 p-8 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-4">
-            <div className="h-14 w-14 rounded-2xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 shrink-0">
-              <Building2 className="w-7 h-7" />
+        {/* University Partnership Row */}
+        <div className="rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-4 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="h-10 w-10 rounded-xl bg-sky-50 dark:bg-sky-950/60 border border-sky-100 dark:border-sky-800 flex items-center justify-center text-sky-600 dark:text-sky-400 shrink-0">
+              <Building2 className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-lg font-bold text-white">
-                Kemitraan Perguruan Tinggi & Riset Terapan
+              <h4 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
+                Kemitraan Universitas & Riset
               </h4>
-              <p className="text-xs sm:text-sm text-slate-400 max-w-2xl mt-0.5">
-                Bermitra dengan program studi teknologi informasi untuk menyelaraskan kurikulum kampus dengan kebutuhan industri aktual, riset terapan bersama, serta rekrutmen talenta muda berbakat.
+              <p className="text-xs text-slate-500 dark:text-slate-400">
+                Penyelarasan kurikulum kampus dan inkubasi talenta digital muda.
               </p>
             </div>
           </div>
 
           <Button
             variant="outline"
+            size="sm"
             onClick={onOpenContact}
-            className="shrink-0 gap-2 text-xs"
+            className="w-full sm:w-auto shrink-0 justify-center gap-1.5 text-xs border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-900"
           >
-            <span>Daftar Mitra Kampus / Magang</span>
-            <ArrowRight className="w-3.5 h-3.5 text-cyan-400" />
+            <span>Daftar Kemitraan</span>
+            <ArrowRight className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400" />
           </Button>
         </div>
 
@@ -156,4 +135,3 @@ export function AcademicPartnership({ onOpenContact }) {
     </section>
   )
 }
-

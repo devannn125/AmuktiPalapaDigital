@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card"
+import { Card } from "./ui/card"
 import { Badge } from "./ui/badge"
 import { 
   Users, 
@@ -8,7 +8,6 @@ import {
   Palette, 
   Calculator, 
   Workflow, 
-  ShieldCheck, 
   CheckCircle2, 
   Layers, 
   Crown,
@@ -22,152 +21,121 @@ export function OrgStructure() {
     {
       id: "ceo",
       title: "Chief Executive Officer (CEO)",
-      category: "C-Level Executive",
+      category: "Executive",
       icon: Crown,
-      summary: "Perencanaan Strategis & Keputusan Bisnis Menyeluruh",
-      description:
-        "Bertanggung jawab atas perencanaan strategis perusahaan, pengawasan pelaksanaan program kerja, serta pengambilan keputusan bisnis dan teknologi secara keseluruhan untuk memastikan arah pertumbuhan perusahaan yang berkelanjutan.",
+      summary: "Perencanaan Strategis & Keputusan Bisnis",
+      description: "Menetapkan visi jangka panjang, pengawasan program kerja, dan keputusan bisnis menyeluruh.",
       keyResponsibilities: [
-        "Menetapkan visi jangka panjang dan peta jalan bisnis perusahaan",
-        "Pengawasan menyeluruh atas implementasi program kerja lintas divisi",
-        "Pengambilan keputusan strategis investasi teknologi dan kemitraan enterprise",
-        "Menjaga akuntabilitas dan tata kelola korporasi (corporate governance)",
+        "Arah strategis dan kemitraan enterprise",
+        "Akuntabilitas tata kelola korporasi",
       ],
-      color: "from-amber-400 to-amber-600",
-      accent: "text-amber-400 border-amber-500/30 bg-amber-500/10",
+      accent: "text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-800 bg-amber-50 dark:bg-amber-950/60",
     },
     {
       id: "cto",
       title: "Chief Technology Officer (CTO)",
-      category: "C-Level Executive",
+      category: "Executive",
       icon: Code,
-      summary: "Kepemimpinan Teknologi & Perencanaan Arsitektur",
-      description:
-        "Bertugas memimpin keseluruhan divisi teknologi perusahaan, melakukan perencanaan arsitektur sistem, serta mengawasi siklus riset, pengembangan, dan pemeliharaan produk perangkat lunak.",
+      summary: "Kepemimpinan Teknologi & Arsitektur",
+      description: "Memimpin divisi teknologi, perencanaan arsitektur sistem, serta riset dan stack software.",
       keyResponsibilities: [
-        "Memimpin 5 pilar divisi teknologi informasi perusahaan",
-        "Merancang arsitektur sistem enterprise yang scalable dan resilient",
-        "Memilih stack teknologi, standar keamanan data, dan metodologi DevOps",
-        "Memastikan kesiapan infrastruktur cloud menghadapi beban tinggi",
+        "Arsitektur software enterprise & cloud",
+        "Standar mutu dan tata kelola keamanan",
       ],
-      color: "from-cyan-400 to-blue-600",
-      accent: "text-cyan-400 border-cyan-500/30 bg-cyan-500/10",
+      accent: "text-sky-700 dark:text-sky-400 border-sky-200 dark:border-sky-800 bg-sky-50 dark:bg-sky-950/60",
     },
     {
       id: "cmo",
       title: "Chief Marketing Officer (CMO)",
-      category: "C-Level Executive",
+      category: "Executive",
       icon: Briefcase,
-      summary: "Pemasaran Strategis, Branding & Hubungan Klien",
-      description:
-        "Bertanggung jawab atas strategi pemasaran, branding korporat, dan pengembangan hubungan yang berkesinambungan dengan klien enterprise serta mitra bisnis perusahaan.",
+      summary: "Pemasaran & Hubungan Klien",
+      description: "Mengembangkan branding korporat, strategi penetrasi pasar, dan kemitraan bisnis.",
       keyResponsibilities: [
-        "Memformulasikan strategi penetrasi pasar digital B2B dan enterprise",
-        "Membangun positioning dan reputasi brand Amukti Palapa Digital",
-        "Menjalin aliansi strategis dengan sektor industri dan institusi pendidikan",
-        "Menganalisis tren pasar transformasi digital untuk inovasi layanan baru",
+        "Penetrasi pasar B2B & branding korporat",
+        "Aliansi strategis klien dan institusi",
       ],
-      color: "from-pink-400 to-rose-600",
-      accent: "text-pink-400 border-pink-500/30 bg-pink-500/10",
+      accent: "text-rose-700 dark:text-rose-400 border-rose-200 dark:border-rose-800 bg-rose-50 dark:bg-rose-950/60",
     },
     {
       id: "coo",
       title: "Chief Operating Officer (COO)",
-      category: "C-Level Executive",
+      category: "Executive",
       icon: Workflow,
-      summary: "Operasional Harian, Efisiensi & Sumber Daya Internal",
-      description:
-        "Mengawasi operasional harian perusahaan, memastikan efisiensi proses kerja antar divisi, serta mengelola optimalisasi sumber daya internal perusahaan.",
+      summary: "Operasional & Efisiensi Tim",
+      description: "Mengawasi alur kerja harian lintas divisi dan pemanfaatan sumber daya internal perusahaan.",
       keyResponsibilities: [
-        "Memastikan alur kerja lintas departemen berjalan lancar tanpa friksi",
-        "Manajemen sumber daya manusia dan fasilitas teknologi pendukung",
-        "Penyelarasan operasional proyek agar delivery tepat waktu dan sesuai SLA",
-        "Evaluasi berkala terhadap efektivitas dan produktivitas internal",
+        "Efisiensi proses kerja dan utilisasi SDM",
+        "Ketepatan waktu delivery dan SLA proyek",
       ],
-      color: "from-indigo-400 to-purple-600",
-      accent: "text-indigo-400 border-indigo-500/30 bg-indigo-500/10",
+      accent: "text-indigo-700 dark:text-indigo-400 border-indigo-200 dark:border-indigo-800 bg-indigo-50 dark:bg-indigo-950/60",
     },
     {
       id: "head-of-eng",
       title: "Head of Engineering",
-      category: "Engineering Management",
+      category: "Engineering",
       icon: Layers,
-      summary: "Kepemimpinan Tim Rekayasa & Standar Kualitas Teknis",
-      description:
-        "Memimpin tim engineering dalam pengembangan aplikasi, sistem, dan layanan berbasis digital sesuai kebutuhan klien dan standar kualitas perusahaan.",
+      summary: "Supervisi Teknis & Standar Kode",
+      description: "Memimpin para engineer dalam eksekusi sprint dan penerapan standar review kode ketat.",
       keyResponsibilities: [
-        "Supervisi teknis harian para software engineer dan DevOps",
-        "Pemberlakuan standar code review ketat, testing, dan QA deployment",
-        "Penyelarasan kebutuhan fungsional klien ke dalam sprint teknis",
-        "Bimbingan teknis intensif kepada staf dan peserta program magang",
+        "Supervisi harian software engineer & QA",
+        "Mentoring teknis tim dan peserta magang",
       ],
-      color: "from-teal-400 to-emerald-600",
-      accent: "text-teal-400 border-teal-500/30 bg-teal-500/10",
+      accent: "text-teal-700 dark:text-teal-400 border-teal-200 dark:border-teal-800 bg-teal-50 dark:bg-teal-950/60",
     },
     {
       id: "uiux",
       title: "UI/UX Designer",
-      category: "Design & Experience",
+      category: "Design",
       icon: Palette,
-      summary: "Perancangan Pengalaman & Antarmuka Pengguna",
-      description:
-        "Merancang antarmuka dan pengalaman pengguna (user interface dan user experience) dari produk digital yang dikembangkan perusahaan agar intuitif, ergonomis, dan modern.",
+      summary: "Pengalaman & Antarmuka Pengguna",
+      description: "Merancang wireframe, user flow, dan design system intuitif untuk produk digital klien.",
       keyResponsibilities: [
-        "Riset pengguna dan pemetaan alur perjalanan pengguna (user journey)",
-        "Perancangan wireframe, interaktif prototype, dan high-fidelity mockups",
-        "Pemeliharaan design system yang konsisten untuk seluruh produk klien",
-        "Kolaborasi erat dengan tim engineering untuk kesempurnaan implementasi",
+        "Riset kebutuhan pengguna & prototyping",
+        "Design system multi-platform konsisten",
       ],
-      color: "from-violet-400 to-purple-600",
-      accent: "text-violet-400 border-violet-500/30 bg-violet-500/10",
+      accent: "text-purple-700 dark:text-purple-400 border-purple-200 dark:border-purple-800 bg-purple-50 dark:bg-purple-950/60",
     },
     {
       id: "accounting",
       title: "Accounting & Finance",
-      category: "Financial Governance",
+      category: "Finance",
       icon: Calculator,
-      summary: "Pencatatan Keuangan, Penganggaran & Tata Kelola",
-      description:
-        "Mengelola pencatatan keuangan, penganggaran proyek, serta pelaporan administrasi keuangan perusahaan secara akurat, transparan, dan tepat waktu.",
+      summary: "Pencatatan Keuangan & Anggaran",
+      description: "Penganggaran proyek, administrasi kontrak, dan pelaporan keuangan akurat.",
       keyResponsibilities: [
-        "Penganggaran alokasi biaya infrastruktur, lisensi, dan pengembangan",
-        "Penyusunan laporan keuangan berkala sesuai standar akuntansi yang berlaku",
-        "Administrasi perpajakan, kontrak proyek, dan kepatuhan finansial",
-        "Pengelolaan arus kas operasional untuk menunjang kelancaran riset IT",
+        "Penganggaran infrastruktur dan lisensi",
+        "Kepatuhan administrasi dan perpajakan",
       ],
-      color: "from-emerald-400 to-green-600",
-      accent: "text-emerald-400 border-emerald-500/30 bg-emerald-500/10",
+      accent: "text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800 bg-emerald-50 dark:bg-emerald-950/60",
     },
   ]
 
   const current = roles.find((r) => r.id === activeRole) || roles[0]
 
   return (
-    <section id="organisasi" className="py-24 relative overflow-hidden bg-slate-950">
+    <section id="organisasi" className="py-16 sm:py-20 relative overflow-hidden bg-slate-50/70 dark:bg-slate-900/40 border-b border-slate-100 dark:border-slate-800 transition-colors duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <Badge variant="gradient" className="gap-1.5 px-3 py-1">
-            <Users className="w-3.5 h-3.5" />
-            <span>Tata Kelola Perusahaan</span>
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12 space-y-2">
+          <Badge variant="default" className="gap-1.5 px-2.5 py-0.5 text-xs">
+            <Users className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400" />
+            <span>Tata Kelola</span>
           </Badge>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
-            Struktur Organisasi & Kepemimpinan
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            Struktur Organisasi
           </h2>
-          <p className="text-slate-400 text-base sm:text-lg">
-            Berdasarkan Gambar 1 dan deskripsi tugas struktur organisasi PT Amukti Palapa Digital, setiap lini kepemimpinan memegang peranan krusial dalam keberhasilan delivery sistem.
+          <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm">
+            Jajaran kepemimpinan PT Amukti Palapa Digital.
           </p>
         </div>
 
-        {/* Interactive Structure Navigator */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        {/* Navigator */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
           
-          {/* Role List (Left Side) */}
-          <div className="lg:col-span-5 space-y-2">
-            <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3 px-1">
-              Daftar Posisi Struktur Organisasi:
-            </div>
+          {/* List */}
+          <div className="lg:col-span-5 space-y-1.5">
             {roles.map((role) => {
               const Icon = role.icon
               const isSelected = activeRole === role.id
@@ -175,24 +143,24 @@ export function OrgStructure() {
                 <button
                   key={role.id}
                   onClick={() => setActiveRole(role.id)}
-                  className={`w-full flex items-center justify-between p-3.5 rounded-xl border text-left transition-all duration-200 cursor-pointer ${
+                  className={`w-full flex items-center justify-between p-2.5 sm:p-3 rounded-xl border text-left transition-all duration-150 cursor-pointer ${
                     isSelected
-                      ? "bg-slate-900 border-cyan-500/50 shadow-lg shadow-cyan-500/10 scale-[1.01]"
-                      : "bg-slate-950/60 border-slate-800/80 hover:bg-slate-900/60 hover:border-slate-700"
+                      ? "bg-white dark:bg-slate-800 border-sky-300 dark:border-sky-600 shadow-xs"
+                      : "bg-white/60 dark:bg-slate-900/60 border-slate-200 dark:border-slate-800 hover:bg-white dark:hover:bg-slate-800/80"
                   }`}
                 >
-                  <div className="flex items-center gap-3">
-                    <div className={`p-2 rounded-lg border ${role.accent}`}>
-                      <Icon className="w-4 h-4" />
+                  <div className="flex items-center gap-2.5">
+                    <div className={`p-1.5 rounded-lg border ${role.accent} shrink-0`}>
+                      <Icon className="w-3.5 h-3.5" />
                     </div>
-                    <div>
-                      <div className="text-sm font-semibold text-white">{role.title}</div>
-                      <div className="text-xs text-slate-400">{role.summary}</div>
+                    <div className="overflow-hidden">
+                      <div className="text-xs sm:text-sm font-bold text-slate-900 dark:text-white truncate">{role.title}</div>
+                      <div className="text-[11px] text-slate-500 dark:text-slate-400 truncate">{role.summary}</div>
                     </div>
                   </div>
                   <ChevronRight
-                    className={`w-4 h-4 transition-transform ${
-                      isSelected ? "text-cyan-400 translate-x-0.5" : "text-slate-600"
+                    className={`w-4 h-4 shrink-0 transition-transform ${
+                      isSelected ? "text-sky-600 dark:text-sky-400 translate-x-0.5" : "text-slate-400"
                     }`}
                   />
                 </button>
@@ -200,58 +168,47 @@ export function OrgStructure() {
             })}
           </div>
 
-          {/* Role Details Card (Right Side) */}
+          {/* Details Card */}
           <div className="lg:col-span-7">
-            <Card className="bg-slate-900/90 border-slate-800 relative overflow-hidden backdrop-blur-xl p-8 sticky top-28">
-              <div className={`absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${current.color}`} />
-
-              <div className="flex items-center justify-between gap-4 mb-6">
+            <Card className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 sm:p-6 rounded-2xl sticky top-24">
+              <div className="flex items-center justify-between mb-4">
                 <Badge variant="outline" className={`text-xs ${current.accent}`}>
                   {current.category}
                 </Badge>
-                <div className="text-xs font-mono text-slate-400">
-                  Dokumen Resmi Hal. 6 & 7
-                </div>
+                <span className="text-xs font-mono text-slate-400">Dokumen Hal. 6-7</span>
               </div>
 
-              <div className="flex items-start gap-4 mb-6">
-                <div className={`p-3.5 rounded-2xl border ${current.accent}`}>
-                  <current.icon className="w-7 h-7" />
+              <div className="flex items-start gap-3 mb-4">
+                <div className={`p-2.5 rounded-xl border ${current.accent} shrink-0`}>
+                  <current.icon className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-white font-heading">
+                  <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white font-heading">
                     {current.title}
                   </h3>
-                  <p className="text-sm text-cyan-400 font-medium mt-0.5">
+                  <p className="text-xs text-sky-700 dark:text-sky-400 font-medium">
                     {current.summary}
                   </p>
                 </div>
               </div>
 
-              <div className="mb-6 p-4 rounded-xl bg-slate-950/70 border border-slate-800/80">
-                <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
-                  Uraian Tugas Resmi:
-                </div>
-                <p className="text-sm text-slate-200 leading-relaxed">
-                  {current.description}
-                </p>
-              </div>
+              <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4 p-3 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-100 dark:border-slate-800">
+                {current.description}
+              </p>
 
-              <div className="space-y-3">
-                <div className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
-                  Tanggung Jawab Pokok & Fungsi Kerja:
+              <div className="space-y-1.5">
+                <div className="text-[11px] font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">
+                  Fungsi Pokok:
                 </div>
-                <div className="space-y-2.5">
-                  {current.keyResponsibilities.map((resp, i) => (
-                    <div
-                      key={i}
-                      className="flex items-start gap-2.5 p-3 rounded-lg bg-slate-950/40 border border-slate-800/60 text-xs sm:text-sm text-slate-300"
-                    >
-                      <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
-                      <span>{resp}</span>
-                    </div>
-                  ))}
-                </div>
+                {current.keyResponsibilities.map((resp, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center gap-2 text-xs text-slate-700 dark:text-slate-300"
+                  >
+                    <CheckCircle2 className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400 shrink-0" />
+                    <span>{resp}</span>
+                  </div>
+                ))}
               </div>
 
             </Card>
@@ -263,4 +220,3 @@ export function OrgStructure() {
     </section>
   )
 }
-

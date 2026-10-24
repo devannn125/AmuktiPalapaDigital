@@ -1,7 +1,6 @@
 import React, { useState } from "react"
 import { Button } from "./ui/button"
-import { Badge } from "./ui/badge"
-import { X, Send, CheckCircle, MessageSquare, Mail, Sparkles } from "lucide-react"
+import { X, Send, CheckCircle, MessageSquare, Sparkles } from "lucide-react"
 
 export function ContactModal({ isOpen, onClose, initialMessage = "" }) {
   const [formData, setFormData] = useState({
@@ -38,15 +37,15 @@ export function ContactModal({ isOpen, onClose, initialMessage = "" }) {
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-slate-950/80 backdrop-blur-md transition-opacity"
+        className="fixed inset-0 bg-slate-900/50 dark:bg-slate-950/80 backdrop-blur-xs transition-opacity"
         onClick={onClose}
       />
 
       {/* Modal Dialog */}
-      <div className="relative w-full max-w-lg rounded-2xl bg-slate-900 border border-slate-800 p-6 sm:p-8 shadow-2xl z-10 animate-in zoom-in-95 duration-200">
+      <div className="relative w-full max-w-lg rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-xl z-10 animate-in zoom-in-95 duration-150">
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+          className="absolute top-4 right-4 p-1.5 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
           aria-label="Tutup Modal"
         >
           <X className="w-5 h-5" />
@@ -54,40 +53,40 @@ export function ContactModal({ isOpen, onClose, initialMessage = "" }) {
 
         {submitted ? (
           <div className="py-8 text-center space-y-4">
-            <div className="h-14 w-14 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 mx-auto">
+            <div className="h-14 w-14 rounded-full bg-emerald-100 dark:bg-emerald-950/80 border border-emerald-200 dark:border-emerald-800 flex items-center justify-center text-emerald-600 dark:text-emerald-400 mx-auto">
               <CheckCircle className="w-7 h-7" />
             </div>
-            <h3 className="text-xl font-bold text-white">Konsultasi Terkirim!</h3>
-            <p className="text-xs text-slate-300 leading-relaxed max-w-sm mx-auto">
-              Tim konsultan PT Amukti Palapa Digital akan menghubungi Anda melalui email atau kontak tertera dalam 1x24 jam.
+            <h3 className="text-xl font-bold text-slate-900 dark:text-white">Konsultasi Terkirim!</h3>
+            <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed max-w-sm mx-auto">
+              Tim konsultan PT Amukti Palapa Digital akan menghubungi Anda melalui email atau kontak tertera dalam 1x24 jam kerja.
             </p>
             <div className="pt-2 flex justify-center gap-3">
-              <Button variant="outline" size="sm" onClick={onClose} className="text-xs">
+              <Button variant="outline" size="sm" onClick={onClose} className="text-xs border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300">
                 Tutup
               </Button>
-              <Button variant="gradient" size="sm" onClick={handleWhatsApp} className="text-xs">
+              <Button variant="default" size="sm" onClick={handleWhatsApp} className="text-xs bg-sky-600 hover:bg-sky-700 text-white">
                 Hubungi via WhatsApp
               </Button>
             </div>
           </div>
         ) : (
           <div>
-            <div className="mb-6">
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 text-[11px] font-medium mb-2">
-                <Sparkles className="w-3 h-3" />
+            <div className="mb-5">
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-sky-50 dark:bg-sky-950/60 text-sky-700 dark:text-sky-300 border border-sky-100 dark:border-sky-800 text-[11px] font-semibold mb-2">
+                <Sparkles className="w-3 h-3 text-sky-600 dark:text-sky-400" />
                 <span>Konsultasi Cepat</span>
               </div>
-              <h3 className="text-xl font-bold text-white font-heading">
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white font-heading">
                 Mulai Diskusi Transformasi Digital
               </h3>
-              <p className="text-xs text-slate-400 mt-1">
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
                 Isi form di bawah untuk menjadwalkan sesi discovery teknis dengan arsitek kami.
               </p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-3.5">
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1">
+                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
                   Nama Anda *
                 </label>
                 <input
@@ -96,13 +95,13 @@ export function ContactModal({ isOpen, onClose, initialMessage = "" }) {
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   placeholder="Nama Lengkap"
-                  className="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors"
+                  className="w-full px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 text-xs sm:text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:bg-white dark:focus:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors"
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">
+                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
                     Email Kerja *
                   </label>
                   <input
@@ -111,31 +110,31 @@ export function ContactModal({ isOpen, onClose, initialMessage = "" }) {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="nama@organisasi.id"
-                    className="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors"
+                    className="w-full px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 text-xs sm:text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:bg-white dark:focus:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-slate-300 mb-1">
-                    Nama Institusi/PT
+                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
+                    Nama Institusi / PT
                   </label>
                   <input
                     type="text"
                     value={formData.company}
                     onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                     placeholder="Nama Instansi"
-                    className="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors"
+                    className="w-full px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 text-xs sm:text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:bg-white dark:focus:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1">
+                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
                   Divisi Terkait
                 </label>
                 <select
                   value={formData.category}
                   onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                  className="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white focus:outline-none focus:border-cyan-500 transition-colors"
+                  className="w-full px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 text-xs sm:text-sm text-slate-900 dark:text-white focus:bg-white dark:focus:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors"
                 >
                   <option value="software">Software Engineering (Aplikasi/Web/Mobile)</option>
                   <option value="cloud">Infrastructure & Cloud Division</option>
@@ -147,7 +146,7 @@ export function ContactModal({ isOpen, onClose, initialMessage = "" }) {
               </div>
 
               <div>
-                <label className="block text-xs font-medium text-slate-300 mb-1">
+                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
                   Pesan / Gambaran Kebutuhan
                 </label>
                 <textarea
@@ -155,7 +154,7 @@ export function ContactModal({ isOpen, onClose, initialMessage = "" }) {
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   placeholder="Ceritakan rencana sistem Anda..."
-                  className="w-full px-3.5 py-2 rounded-xl bg-slate-950 border border-slate-800 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 transition-colors resize-none"
+                  className="w-full px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 text-xs sm:text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:bg-white dark:focus:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors resize-none"
                 />
               </div>
 
@@ -164,15 +163,15 @@ export function ContactModal({ isOpen, onClose, initialMessage = "" }) {
                   type="button"
                   variant="outline"
                   onClick={handleWhatsApp}
-                  className="flex-1 justify-center gap-1.5 text-xs border-emerald-500/40 text-emerald-400 hover:bg-emerald-950/20"
+                  className="flex-1 justify-center gap-1.5 text-xs border-emerald-300 dark:border-emerald-800 text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 hover:bg-emerald-100 dark:hover:bg-emerald-900/60"
                 >
                   <MessageSquare className="w-3.5 h-3.5" />
                   <span>WhatsApp</span>
                 </Button>
                 <Button
                   type="submit"
-                  variant="gradient"
-                  className="flex-1 justify-center gap-1.5 text-xs"
+                  variant="default"
+                  className="flex-1 justify-center gap-1.5 text-xs bg-sky-600 hover:bg-sky-700 text-white"
                 >
                   <Send className="w-3.5 h-3.5" />
                   <span>Kirim Pesan</span>
@@ -185,4 +184,3 @@ export function ContactModal({ isOpen, onClose, initialMessage = "" }) {
     </div>
   )
 }
-

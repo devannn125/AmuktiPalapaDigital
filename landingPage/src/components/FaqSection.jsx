@@ -11,46 +11,46 @@ import { HelpCircle } from "lucide-react"
 export function FaqSection() {
   const faqs = [
     {
-      q: "Layanan teknologi apa saja yang menjadi fokus PT Amukti Palapa Digital?",
-      a: "PT Amukti Palapa Digital berfokus pada pengembangan perangkat lunak (software development) berbasis digital, perancangan arsitektur cloud, pengamanan infrastruktur dan data (cybersecurity), tata kelola operasional IT 24/7, hingga implementasi data analytics & business intelligence untuk klien enterprise.",
+      q: "Layanan utama apa saja yang disediakan?",
+      a: "Pengembangan software (web & mobile), arsitektur cloud, keamanan siber, data analytics, serta pemeliharaan operasional IT 24/7.",
     },
     {
-      q: "Bagaimana struktur koordinasi teknis di bawah pimpinan CTO?",
-      a: "Seluruh departemen teknologi dipimpin langsung oleh Chief Technology Officer (CTO) dan Head of Engineering, membawahi 5 divisi spesialisasi: Software Engineering Division, Infrastructure & Cloud Division, Cybersecurity Division, Data & Analytics Division, serta IT Operations & Support / Service Desk Division.",
+      q: "Bagaimana struktur koordinasi teknis di bawah CTO?",
+      a: "Dipimpin oleh CTO dan Head of Engineering yang membawahi 5 divisi spesialis: Software Engineering, Cloud, Cybersec, Data, dan Helpdesk.",
     },
     {
-      q: "Apakah PT Amukti Palapa Digital melayani klien di luar Daerah Istimewa Yogyakarta?",
-      a: "Tentu. Kami menerapkan pola kerja fleksibel (Hybrid & Remote) dengan platform kolaborasi cloud-native, repositori kode terpusat, dan telekonferensi rutin sehingga dapat mendampingi klien enterprise di seluruh Indonesia maupun kawasan regional.",
+      q: "Apakah melayani klien di luar Yogyakarta?",
+      a: "Ya. Kami bekerja secara fleksibel (Hybrid & Remote) untuk klien enterprise di seluruh Indonesia maupun regional.",
     },
     {
-      q: "Bagaimana jaminan keamanan data dan kepatuhan privasi (UU PDP)?",
-      a: "Divisi Cybersecurity kami menerapkan standar ketat mencakup arsitektur Zero-Trust, enkripsi data berlapis (at-rest & in-transit), manajemen identitas (IAM), serta audit keamanan berkala (VAPT) untuk memastikan kerahasiaan dan integritas data enterprise klien terlindungi secara komprehensif.",
+      q: "Bagaimana jaminan keamanan dan privasi data?",
+      a: "Menerapkan standar Zero-Trust, enkripsi data at-rest & in-transit, serta audit berkala sesuai regulasi UU PDP.",
     },
     {
-      q: "Bagaimana institusi perguruan tinggi atau mahasiswa dapat mengikuti program magang?",
-      a: "PT Amukti Palapa Digital secara aktif berkolaborasi dengan perguruan tinggi (seperti Universitas Atma Jaya Yogyakarta). Program magang berlangsung terstruktur selama 6 bulan dengan keterlibatan langsung pada proyek riil di bawah bimbingan para mentor divisi CTO.",
+      q: "Bagaimana cara mendaftar program magang kampus?",
+      a: "Mahasiswa dapat mendaftar melalui form konsultasi atau kemitraan perguruan tinggi untuk program magang terstruktur selama 6 bulan.",
     },
     {
-      q: "Bagaimana tahapan awal memulai konsultasi atau kerja sama proyek?",
-      a: "Anda dapat menghubungi kami melalui formulir konsultasi, WhatsApp, atau email. Tim konsultan kami akan menjadwalkan sesi discovery gratis untuk menganalisis arsitektur sistem yang dibutuhkan dan menyusun proposal teknis yang tepat guna.",
+      q: "Bagaimana memulai konsultasi proyek?",
+      a: "Hubungi kami via formulir konsultasi atau WhatsApp untuk menjadwalkan sesi discovery teknis gratis.",
     },
   ]
 
   return (
-    <section className="py-24 relative overflow-hidden bg-slate-950">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section className="py-16 sm:py-20 relative overflow-hidden bg-slate-50/70 dark:bg-slate-900/40 border-b border-slate-100 dark:border-slate-800 transition-colors duration-200">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16 space-y-4">
-          <Badge variant="gradient" className="gap-1.5 px-3 py-1">
-            <HelpCircle className="w-3.5 h-3.5" />
-            <span>Tanya Jawab</span>
+        <div className="text-center max-w-xl mx-auto mb-10 space-y-2">
+          <Badge variant="default" className="gap-1.5 px-2.5 py-0.5 text-xs">
+            <HelpCircle className="w-3.5 h-3.5 text-sky-600 dark:text-sky-400" />
+            <span>FAQ</span>
           </Badge>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Pertanyaan yang Sering Diajukan
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            Pertanyaan Umum
           </h2>
-          <p className="text-slate-400 text-sm sm:text-base">
-            Informasi transparan seputar kapabilitas teknis, tata kelola proyek, dan model kemitraan PT Amukti Palapa Digital.
+          <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm">
+            Informasi ringkas seputar kapabilitas teknis dan layanan kami.
           </p>
         </div>
 
@@ -68,4 +68,3 @@ export function FaqSection() {
     </section>
   )
 }
-

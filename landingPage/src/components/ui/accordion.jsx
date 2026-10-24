@@ -31,7 +31,7 @@ function AccordionItem({ value, children, className }) {
   return (
     <div
       className={cn(
-        "rounded-xl border border-slate-800/80 bg-slate-900/40 backdrop-blur-sm overflow-hidden transition-all duration-200",
+        "rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden transition-all duration-200 shadow-2xs hover:border-slate-300 dark:hover:border-slate-700",
         className
       )}
     >
@@ -51,16 +51,16 @@ function AccordionTrigger({ itemValue, children, className }) {
       type="button"
       onClick={() => toggleItem(itemValue)}
       className={cn(
-        "flex w-full items-center justify-between p-5 text-left font-medium text-slate-200 hover:text-white transition-all cursor-pointer",
-        isOpen && "text-cyan-400 font-semibold",
+        "flex w-full items-center justify-between p-4 sm:p-5 text-left font-medium text-slate-800 dark:text-slate-200 hover:text-sky-600 dark:hover:text-sky-400 transition-colors cursor-pointer",
+        isOpen && "text-sky-600 dark:text-sky-400 font-semibold",
         className
       )}
     >
-      <span>{children}</span>
+      <span className="text-sm sm:text-base pr-3">{children}</span>
       <ChevronDown
         className={cn(
-          "h-5 w-5 shrink-0 text-slate-400 transition-transform duration-200",
-          isOpen && "rotate-180 text-cyan-400"
+          "h-4 w-4 shrink-0 text-slate-400 dark:text-slate-500 transition-transform duration-200",
+          isOpen && "rotate-180 text-sky-600 dark:text-sky-400"
         )}
       />
     </button>
@@ -76,7 +76,7 @@ function AccordionContent({ itemValue, children, className }) {
   return (
     <div
       className={cn(
-        "px-5 pb-5 pt-0 text-sm text-slate-400 leading-relaxed border-t border-slate-800/50 animate-in fade-in-50 duration-200",
+        "px-4 sm:px-5 pb-4 sm:pb-5 pt-0 text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-800/80 animate-in fade-in-50 duration-200",
         className
       )}
     >
@@ -86,4 +86,3 @@ function AccordionContent({ itemValue, children, className }) {
 }
 
 export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }
-
