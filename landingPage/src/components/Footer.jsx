@@ -1,136 +1,70 @@
-import React from "react"
-import { BrandLogo } from "./BrandLogo"
-import { MapPin, ArrowUp, ShieldCheck } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
 
 export function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" })
-  }
+  const currentYear = new Date().getFullYear()
+
+  const quickLinks = [
+    { name: "Tentang Kami", href: "#tentang" },
+    { name: "Keahlian", href: "#keahlian" },
+    { name: "Visi & Misi", href: "#visi-misi" },
+    { name: "Nilai Bisnis", href: "#nilai-bisnis" },
+    { name: "Kontak", href: "#kontak" },
+  ]
 
   return (
-    <footer className="bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 pt-16 pb-12 text-slate-600 dark:text-slate-400 transition-colors duration-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <footer className="bg-stone-950 text-stone-300 pt-12 pb-10 sm:pt-16 sm:pb-12 border-t border-stone-900 font-sans">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12">
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 sm:gap-10 pb-12 border-b border-slate-200 dark:border-slate-800">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 sm:gap-8 lg:gap-12">
           
-          {/* Brand & Overview (5 cols) */}
-          <div className="lg:col-span-5 space-y-4">
-            <BrandLogo />
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed max-w-sm pt-1">
-              PT Amukti Palapa Digital adalah penyedia solusi teknologi informasi dan transformasi digital terpercaya bagi sektor enterprise dan institusi modern di Indonesia.
+          {/* Col 1: Brand & Slogan */}
+          <div className="md:col-span-5 space-y-2">
+            <div className="text-xl sm:text-2xl font-black text-orange-500 tracking-tight">
+              PT Amukti Palapa Digital
+            </div>
+            <p className="text-xs text-stone-400 leading-relaxed max-w-sm">
+              Perusahaan penyedia solusi teknologi informasi berbasis digital untuk pasar enterprise.
             </p>
-            <div className="flex items-start gap-2 text-xs text-slate-500 dark:text-slate-400 pt-1">
-              <MapPin className="w-4 h-4 text-sky-600 dark:text-sky-400 shrink-0 mt-0.5" />
-              <span>Kenaran, Sumberharjo, Kec. Prambanan, Kab. Sleman, D.I. Yogyakarta 55572</span>
-            </div>
           </div>
 
-          {/* Quick Links (2 cols) */}
-          <div className="lg:col-span-2 space-y-3">
-            <div className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">
-              Navigasi Utama
+          {/* Col 2: Alamat Kantor */}
+          <div className="md:col-span-4 space-y-1.5">
+            <div className="text-xs font-mono font-bold uppercase tracking-wider text-stone-400">
+              KANTOR PUSAT
             </div>
-            <ul className="space-y-2 text-xs">
-              <li>
-                <a href="#divisi" className="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">
-                  5 Divisi Teknologi
-                </a>
-              </li>
-              <li>
-                <a href="#solusi" className="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">
-                  Alur Metodologi
-                </a>
-              </li>
-              <li>
-                <a href="#visi-misi" className="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">
-                  Visi & Misi
-                </a>
-              </li>
-              <li>
-                <a href="#organisasi" className="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">
-                  Struktur Organisasi
-                </a>
-              </li>
-              <li>
-                <a href="#simulasi" className="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">
-                  Simulasi Proyek
-                </a>
-              </li>
-              <li>
-                <a href="#magang" className="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">
-                  Program Magang
-                </a>
-              </li>
-              <li>
-                <a href="#lokasi" className="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">
-                  Lokasi Kantor
-                </a>
-              </li>
-            </ul>
+            <p className="text-xs text-stone-300 leading-relaxed">
+              Kenaran, Sumberharjo, Kec. Prambanan, Kab. Sleman, D.I. Yogyakarta 55572
+            </p>
           </div>
 
-          {/* IT Divisions (3 cols) */}
-          <div className="lg:col-span-3 space-y-3">
-            <div className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">
-              Divisi Teknologi CTO
+          {/* Col 3: Navigasi Cepat */}
+          <div className="md:col-span-3 space-y-1.5">
+            <div className="text-xs font-mono font-bold uppercase tracking-wider text-stone-400">
+              NAVIGASI
             </div>
-            <ul className="space-y-2 text-xs text-slate-600 dark:text-slate-400">
-              <li className="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">
-                Software Engineering Division
-              </li>
-              <li className="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">
-                Infrastructure & Cloud Division
-              </li>
-              <li className="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">
-                Cybersecurity Division
-              </li>
-              <li className="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">
-                Data & Analytics Division
-              </li>
-              <li className="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">
-                IT Operations & Service Desk 24/7
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact info (2 cols) */}
-          <div className="lg:col-span-2 space-y-3">
-            <div className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">
-              Hubungi Kami
-            </div>
-            <div className="text-xs space-y-2">
-              <div className="text-slate-500 dark:text-slate-400">Email:</div>
-              <a
-                href="mailto:contact@amuktipalapa.co.id"
-                className="text-sky-700 dark:text-sky-400 font-semibold hover:underline block break-all"
-              >
-                contact@amuktipalapa.co.id
-              </a>
-              <div className="text-slate-500 dark:text-slate-400 pt-1">Jam Kerja:</div>
-              <div className="text-slate-700 dark:text-slate-300 font-medium">09.00 – 17.00 WIB (Senin – Jumat)</div>
+            <div className="flex flex-col space-y-1">
+              {quickLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="text-xs text-stone-400 hover:text-orange-400 transition-colors inline-flex items-center gap-1 py-0.5"
+                >
+                  <span>{link.name}</span>
+                  <ArrowUpRight className="w-3 h-3 text-stone-600" />
+                </a>
+              ))}
             </div>
           </div>
 
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
+        <div className="pt-6 sm:pt-8 border-t border-stone-900 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 sm:gap-4 text-xs text-stone-500">
           <div>
-            &copy; {new Date().getFullYear()} PT Amukti Palapa Digital. Hak Cipta Dilindungi Undang-Undang.
+            © {currentYear} PT Amukti Palapa Digital. All rights reserved.
           </div>
-
-          <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1.5 text-slate-600 dark:text-slate-300 font-medium">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-              <span>Enterprise Ready • DI Yogyakarta</span>
-            </span>
-            <button
-              onClick={scrollToTop}
-              className="p-2 rounded-lg bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors cursor-pointer"
-              aria-label="Kembali ke atas"
-            >
-              <ArrowUp className="w-4 h-4" />
-            </button>
+          <div className="text-[11px] text-stone-500">
+            Yogyakarta, Indonesia
           </div>
         </div>
 

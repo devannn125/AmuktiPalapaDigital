@@ -14,6 +14,11 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Poppins', 'system-ui', '-apple-system', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],
+        heading: ['Poppins', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -48,50 +53,11 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        amukti: {
-          navy: "#0A1128",
-          deep: "#001F54",
-          blue: "#034078",
-          teal: "#1282A2",
-          cyan: "#00B4D8",
-          amber: "#F59E0B",
-          gold: "#D97706",
-          light: "#F8FAFC",
-        }
       },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
-      },
-      keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
-        pulseGlow: {
-          '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },
-          '50%': { opacity: '0.8', transform: 'scale(1.05)' },
-        },
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-10px)' },
-        },
-        marquee: {
-          '0%': { transform: 'translateX(0%)' },
-          '100%': { transform: 'translateX(-50%)' },
-        }
-      },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        "pulse-glow": "pulseGlow 6s ease-in-out infinite",
-        "float": "float 5s ease-in-out infinite",
-        "marquee": "marquee 35s linear infinite",
       },
     },
   },

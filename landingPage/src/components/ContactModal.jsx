@@ -1,185 +1,151 @@
-import React, { useState } from "react"
+import { useState } from "react"
 import { Button } from "./ui/button"
-import { X, Send, CheckCircle, MessageSquare, Sparkles } from "lucide-react"
+import { 
+  X, 
+  MessageSquare, 
+  Mail, 
+  Sparkles, 
+  Check, 
+  Copy, 
+  ArrowRight,
+  ExternalLink,
+  ShieldCheck,
+  Phone
+} from "lucide-react"
 
 export function ContactModal({ isOpen, onClose, initialMessage = "" }) {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    company: "",
-    category: "software",
-    message: initialMessage || "",
-  })
-  const [submitted, setSubmitted] = useState(false)
-
-  React.useEffect(() => {
-    if (initialMessage) {
-      setFormData((prev) => ({ ...prev, message: initialMessage }))
-    }
-  }, [initialMessage])
+  const [copied, setCopied] = useState(false)
 
   if (!isOpen) return null
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    setSubmitted(true)
+  const contactData = {
+    email: "contact@amuktipalapa.co.id",
+    phone: "+62 812-3456-7890",
+    phoneClean: "6281234567890",
+  }
+
+  const defaultMessage = "Halo PT Amukti Palapa Digital, saya ingin berkonsultasi mengenai solusi transformasi digital dan kebutuhan sistem untuk perusahaan kami."
+  const activeMessage = initialMessage || defaultMessage
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(activeMessage)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
   }
 
   const handleWhatsApp = () => {
-    const text = encodeURIComponent(
-      `Halo PT Amukti Palapa Digital, saya ${formData.name || "Klien"} dari ${formData.company || "Perusahaan"}. Saya ingin berkonsultasi mengenai: ${formData.message || "Solusi Transformasi Digital"}`
-    )
-    window.open(`https://wa.me/6281234567890?text=${text}`, "_blank")
+    const text = encodeURIComponent(activeMessage)
+    window.open(`https://wa.me/${contactData.phoneClean}?text=${text}`, "_blank")
+    onClose()
+  }
+
+  const handleEmail = () => {
+    const subject = encodeURIComponent("Konsultasi Proyek & Transformasi Digital - PT Amukti Palapa Digital")
+    const body = encodeURIComponent(activeMessage)
+    window.location.href = `mailto:${contactData.email}?subject=${subject}&body=${body}`
     onClose()
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-slate-900/50 dark:bg-slate-950/80 backdrop-blur-xs transition-opacity"
+        className="fixed inset-0 bg-stone-950/70 backdrop-blur-xs transition-opacity"
         onClick={onClose}
       />
 
       {/* Modal Dialog */}
-      <div className="relative w-full max-w-lg rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-6 sm:p-8 shadow-xl z-10 animate-in zoom-in-95 duration-150">
+      <div className="relative w-full max-w-lg max-h-[92vh] overflow-y-auto rounded-2xl bg-white dark:bg-stone-900 border border-stone-200 dark:border-stone-800 p-4 sm:p-7 shadow-2xl z-10 animate-in zoom-in-95 duration-150">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-1.5 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+          className="absolute top-3.5 right-3.5 p-1.5 rounded-lg text-stone-400 hover:text-stone-700 dark:hover:text-stone-200 hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors cursor-pointer"
           aria-label="Tutup Modal"
         >
           <X className="w-5 h-5" />
         </button>
 
-        {submitted ? (
-          <div className="py-8 text-center space-y-4">
-            <div className="h-14 w-14 rounded-full bg-emerald-100 dark:bg-emerald-950/80 border border-emerald-200 dark:border-emerald-800 flex items-center justify-center text-emerald-600 dark:text-emerald-400 mx-auto">
-              <CheckCircle className="w-7 h-7" />
-            </div>
-            <h3 className="text-xl font-bold text-slate-900 dark:text-white">Konsultasi Terkirim!</h3>
-            <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed max-w-sm mx-auto">
-              Tim konsultan PT Amukti Palapa Digital akan menghubungi Anda melalui email atau kontak tertera dalam 1x24 jam kerja.
-            </p>
-            <div className="pt-2 flex justify-center gap-3">
-              <Button variant="outline" size="sm" onClick={onClose} className="text-xs border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300">
-                Tutup
-              </Button>
-              <Button variant="default" size="sm" onClick={handleWhatsApp} className="text-xs bg-sky-600 hover:bg-sky-700 text-white">
-                Hubungi via WhatsApp
-              </Button>
-            </div>
+        {/* Modal Header */}
+        <div className="mb-4 sm:mb-5 pr-6">
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-orange-50 dark:bg-orange-950/60 text-orange-700 dark:text-orange-300 border border-orange-200/80 dark:border-orange-900 text-[10px] sm:text-[11px] font-semibold mb-2">
+            <Sparkles className="w-3 h-3 text-orange-600 dark:text-orange-400" />
+            <span>Konsultasi Langsung • Tanpa Formulir</span>
           </div>
-        ) : (
-          <div>
-            <div className="mb-5">
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-sky-50 dark:bg-sky-950/60 text-sky-700 dark:text-sky-300 border border-sky-100 dark:border-sky-800 text-[11px] font-semibold mb-2">
-                <Sparkles className="w-3 h-3 text-sky-600 dark:text-sky-400" />
-                <span>Konsultasi Cepat</span>
-              </div>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white font-heading">
-                Mulai Diskusi Transformasi Digital
-              </h3>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                Isi form di bawah untuk menjadwalkan sesi discovery teknis dengan arsitek kami.
-              </p>
-            </div>
+          <h3 className="text-lg sm:text-xl font-bold text-stone-900 dark:text-white font-heading tracking-tight">
+            Hubungi Konsultan Kami
+          </h3>
+          <p className="text-xs text-stone-500 dark:text-stone-400 mt-0.5 leading-relaxed">
+            Pilih saluran komunikasi langsung di bawah untuk respon instan tanpa perlu menunggu backend email.
+          </p>
+        </div>
 
-            <form onSubmit={handleSubmit} className="space-y-3.5">
-              <div>
-                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
-                  Nama Anda *
-                </label>
-                <input
-                  type="text"
-                  required
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  placeholder="Nama Lengkap"
-                  className="w-full px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 text-xs sm:text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:bg-white dark:focus:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors"
-                />
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
-                    Email Kerja *
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="nama@organisasi.id"
-                    className="w-full px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 text-xs sm:text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:bg-white dark:focus:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
-                    Nama Institusi / PT
-                  </label>
-                  <input
-                    type="text"
-                    value={formData.company}
-                    onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                    placeholder="Nama Instansi"
-                    className="w-full px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 text-xs sm:text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:bg-white dark:focus:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
-                  Divisi Terkait
-                </label>
-                <select
-                  value={formData.category}
-                  onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                  className="w-full px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 text-xs sm:text-sm text-slate-900 dark:text-white focus:bg-white dark:focus:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors"
-                >
-                  <option value="software">Software Engineering (Aplikasi/Web/Mobile)</option>
-                  <option value="cloud">Infrastructure & Cloud Division</option>
-                  <option value="security">Cybersecurity Division</option>
-                  <option value="data">Data & Analytics Division</option>
-                  <option value="support">IT Operations & Service Desk</option>
-                  <option value="internship">Program Magang & Kemitraan Kampus</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
-                  Pesan / Gambaran Kebutuhan
-                </label>
-                <textarea
-                  rows={3}
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  placeholder="Ceritakan rencana sistem Anda..."
-                  className="w-full px-3.5 py-2 rounded-xl bg-slate-50 dark:bg-slate-950/60 border border-slate-200 dark:border-slate-800 text-xs sm:text-sm text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 focus:bg-white dark:focus:bg-slate-950 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition-colors resize-none"
-                />
-              </div>
-
-              <div className="pt-2 flex items-center gap-3">
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={handleWhatsApp}
-                  className="flex-1 justify-center gap-1.5 text-xs border-emerald-300 dark:border-emerald-800 text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 hover:bg-emerald-100 dark:hover:bg-emerald-900/60"
-                >
-                  <MessageSquare className="w-3.5 h-3.5" />
-                  <span>WhatsApp</span>
-                </Button>
-                <Button
-                  type="submit"
-                  variant="default"
-                  className="flex-1 justify-center gap-1.5 text-xs bg-sky-600 hover:bg-sky-700 text-white"
-                >
-                  <Send className="w-3.5 h-3.5" />
-                  <span>Kirim Pesan</span>
-                </Button>
-              </div>
-            </form>
+        {/* Message Preview Box */}
+        <div className="p-3 sm:p-3.5 rounded-xl bg-stone-50 dark:bg-stone-950/70 border border-stone-200 dark:border-stone-800 mb-4 sm:mb-5">
+          <div className="flex items-center justify-between mb-1.5">
+            <span className="text-[10px] font-semibold uppercase tracking-wider text-stone-400 font-mono">
+              Draf Pesan Konsultasi Anda:
+            </span>
+            <button
+              onClick={handleCopy}
+              type="button"
+              className="text-[10px] text-orange-600 dark:text-orange-400 hover:underline inline-flex items-center gap-1 cursor-pointer font-medium"
+            >
+              {copied ? (
+                <span className="flex items-center gap-1 text-emerald-600 dark:text-emerald-400 font-semibold">
+                  <Check className="w-3 h-3 stroke-[3]" />
+                  <span>Tersalin!</span>
+                </span>
+              ) : (
+                <span className="flex items-center gap-1">
+                  <Copy className="w-3 h-3" />
+                  <span>Salin Teks</span>
+                </span>
+              )}
+            </button>
           </div>
-        )}
+          <p className="text-xs text-stone-700 dark:text-stone-300 italic leading-relaxed break-words">
+            "{activeMessage}"
+          </p>
+        </div>
+
+        {/* Action Buttons */}
+        <div className="space-y-2.5 mb-4 sm:mb-5">
+          {/* WhatsApp Button */}
+          <Button
+            onClick={handleWhatsApp}
+            variant="default"
+            size="default"
+            className="w-full justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-2.5 rounded-xl shadow-xs cursor-pointer text-xs sm:text-sm"
+          >
+            <MessageSquare className="w-4 h-4" />
+            <span>Chat via WhatsApp (Respon Tercepat)</span>
+            <ArrowRight className="w-3.5 h-3.5 ml-auto" />
+          </Button>
+
+          {/* Email Button */}
+          <Button
+            onClick={handleEmail}
+            variant="outline"
+            size="default"
+            className="w-full justify-center gap-2 border-stone-300 dark:border-stone-700 hover:bg-stone-100 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 font-medium py-2.5 rounded-xl cursor-pointer text-xs sm:text-sm"
+          >
+            <Mail className="w-4 h-4 text-orange-600 dark:text-orange-400" />
+            <span>Kirim via Email Resmi Korporat</span>
+            <ExternalLink className="w-3.5 h-3.5 ml-auto text-stone-400" />
+          </Button>
+        </div>
+
+        {/* Footer Guarantee Info */}
+        <div className="pt-3 border-t border-stone-100 dark:border-stone-800 flex flex-col xs:flex-row items-start xs:items-center justify-between gap-1 text-[11px] text-stone-500 dark:text-stone-400">
+          <div className="flex items-center gap-1.5">
+            <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+            <span>Kerahasiaan data terjamin (NDA Ready)</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <Phone className="w-3 h-3 text-stone-400" />
+            <span>09:00 - 17:00 WIB</span>
+          </div>
+        </div>
+
       </div>
     </div>
   )

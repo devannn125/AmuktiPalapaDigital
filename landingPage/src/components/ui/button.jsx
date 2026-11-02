@@ -6,6 +6,10 @@ const Button = React.forwardRef(
     const variants = {
       default:
         "bg-sky-600 text-white shadow-xs hover:bg-sky-700 active:scale-[0.98] transition-all duration-150",
+      orange:
+        "bg-orange-600 hover:bg-orange-700 text-white shadow-xs hover:shadow-orange-500/20 active:scale-[0.98] transition-all duration-150 font-medium",
+      amber:
+        "bg-amber-600 hover:bg-amber-700 text-white shadow-xs hover:shadow-amber-500/20 active:scale-[0.98] transition-all duration-150 font-medium",
       destructive:
         "bg-red-600 text-white shadow-xs hover:bg-red-700",
       outline:
